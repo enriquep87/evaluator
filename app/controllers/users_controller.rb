@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     @user.username = params[:username]
-    @user.email_address = params[:email_address]
+    @user.email = params[:email]
     @user.role = params[:role]
 
     save_status = @user.save
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.username = params[:username]
-    @user.email_address = params[:email_address]
+    @user.email = params[:email]
     @user.role = params[:role]
 
     save_status = @user.save

@@ -69,8 +69,8 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Class comment</th>
-        <th>Class member</th>
+        <th>Session comment</th>
+        <th>Course member</th>
         <th>Rating</th>
         <th>Actions</th>
       </tr>
@@ -79,14 +79,14 @@
       <tr>
         <td>
           <% if review.class_comment.present? %>
-            <a href="/class_comments/<%= review.class_comment.id %>">
-              <%= review.class_comment.class_member_id %>
+            <a href="/session_comments/<%= review.class_comment.id %>">
+              <%= review.class_comment.course_member_id %>
             </a>
           <% end %>
         </td>
         <td>
           <% if review.class_member.present? %>
-            <a href="/class_members/<%= review.class_member.id %>">
+            <a href="/course_members/<%= review.class_member.id %>">
               <%= review.class_member.student_id %>
             </a>
           <% end %>

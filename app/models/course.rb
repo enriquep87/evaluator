@@ -4,7 +4,7 @@ class Course < ApplicationRecord
   belongs_to :professor
 
   has_many   :class_members,
-             :foreign_key => "class_id",
+             :class_name => "CourseMember",
              :dependent => :destroy
 
   # Indirect associations

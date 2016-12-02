@@ -1,9 +1,8 @@
-class Review < ApplicationRecord
+class SessionComment < ApplicationRecord
   # Direct associations
 
-  belongs_to :class_comment,
-             :class_name => "SessionComment",
-             :foreign_key => "session_comment_id"
+  has_many   :reviews,
+             :dependent => :destroy
 
   belongs_to :class_member,
              :class_name => "CourseMember",

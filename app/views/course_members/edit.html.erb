@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @class_member.errors.any? %>
-  <% @class_member.errors.full_messages.each do |message| %>
+<% if @course_member.errors.any? %>
+  <% @course_member.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Class Member #<%= @class_member.id %></h3>
+  <h3>Edit Course Member #<%= @course_member.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_class_member/<%= @class_member.id %>" method="post">
+    <form action="/update_course_member/<%= @course_member.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -24,23 +24,23 @@
           Student
         </label>
 
-        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name, @class_member.student_id), :class => "form-control") %>
+        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name, @course_member.student_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for class_id -->
+      <!-- Label and input for course_id -->
       <div class="form-group">
-        <label for="class_id" class="control-label">
-          Class
+        <label for="course_id" class="control-label">
+          Course
         </label>
 
-        <%= select_tag(:class_id, options_from_collection_for_select(Course.all, :id, :created_at, @class_member.class_id), :class => "form-control") %>
+        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :created_at, @course_member.course_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
-        Update Class Member
+        Update Course Member
       </button>
       or
-      <a href="/class_members/<%= @class_member.id %>">Cancel</a>
+      <a href="/course_members/<%= @course_member.id %>">Cancel</a>
     </form>
   </div>
 </div>
