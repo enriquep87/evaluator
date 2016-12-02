@@ -8,6 +8,10 @@ class Student < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :classes,
+             :through => :class_members,
+             :source => :class
+
   # Validations
 
 end
