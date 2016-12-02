@@ -29,3 +29,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Course has many class_members -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Class_members
+      </li>
+
+      <% @course.class_members.each do |class_member| %>
+        <li class="list-group-item">
+          <a href="/class_members/<%= class_member.id %>">
+            <%= class_member.student_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/class_members/<%= class_member.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_class_member/<%= class_member.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Course has many students -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Students
+      </li>
+
+      <% @course.students.each do |student| %>
+        <li class="list-group-item">
+          <a href="/students/<%= student.id %>">
+            <%= student.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/students/<%= student.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/students/<%= student.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
