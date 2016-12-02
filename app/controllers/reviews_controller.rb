@@ -21,8 +21,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new
 
-    @review.class_comment_id = params[:class_comment_id]
-    @review.class_member_id = params[:class_member_id]
+    @review.session_comment_id = params[:session_comment_id]
+    @review.course_member_id = params[:course_member_id]
     @review.rating = params[:rating]
 
     save_status = @review.save
@@ -50,8 +50,8 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    @review.class_comment_id = params[:class_comment_id]
-    @review.class_member_id = params[:class_member_id]
+    @review.session_comment_id = params[:session_comment_id]
+    @review.course_member_id = params[:course_member_id]
     @review.rating = params[:rating]
 
     save_status = @review.save

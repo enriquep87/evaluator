@@ -1,6 +1,6 @@
 ActiveAdmin.register Review do
 
- permit_params :class_comment_id, :class_member_id, :rating
+ permit_params :session_comment_id, :course_member_id, :rating
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

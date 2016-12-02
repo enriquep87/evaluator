@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @session_comment.errors.any? %>
+  <% @session_comment.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Session Comment #<%= @session_comment.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_session_comment/<%= @session_comment.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for course_member_id -->
+      <div class="form-group">
+        <label for="course_member_id" class="control-label">
+          Course member
+        </label>
+
+        <%= select_tag(:course_member_id, options_from_collection_for_select(CourseMember.all, :id, :student_id, @session_comment.course_member_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for summary -->
+      <div class="form-group">
+        <label for="summary" class="control-label">
+          Summary
+        </label>
+
+        <input type="text" id="summary" name="summary" placeholder="Summary" class="form-control" value="<%= @session_comment.summary %>">
+      </div>
+
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="body" class="control-label">
+          Body
+        </label>
+
+        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="<%= @session_comment.body %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Session Comment
+      </button>
+      or
+      <a href="/session_comments/<%= @session_comment.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,38 +1,38 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => "students#index"
-  # Routes for the Class_comment resource:
+  # Routes for the Session_comment resource:
   # CREATE
-  get "/class_comments/new", :controller => "class_comments", :action => "new"
-  post "/create_class_comment", :controller => "class_comments", :action => "create"
+  get "/session_comments/new", :controller => "session_comments", :action => "new"
+  post "/create_session_comment", :controller => "session_comments", :action => "create"
 
   # READ
-  get "/class_comments", :controller => "class_comments", :action => "index"
-  get "/class_comments/:id", :controller => "class_comments", :action => "show"
+  get "/session_comments", :controller => "session_comments", :action => "index"
+  get "/session_comments/:id", :controller => "session_comments", :action => "show"
 
   # UPDATE
-  get "/class_comments/:id/edit", :controller => "class_comments", :action => "edit"
-  post "/update_class_comment/:id", :controller => "class_comments", :action => "update"
+  get "/session_comments/:id/edit", :controller => "session_comments", :action => "edit"
+  post "/update_session_comment/:id", :controller => "session_comments", :action => "update"
 
   # DELETE
-  get "/delete_class_comment/:id", :controller => "class_comments", :action => "destroy"
+  get "/delete_session_comment/:id", :controller => "session_comments", :action => "destroy"
   #------------------------------
 
-  # Routes for the Class_member resource:
+  # Routes for the Course_member resource:
   # CREATE
-  get "/class_members/new", :controller => "class_members", :action => "new"
-  post "/create_class_member", :controller => "class_members", :action => "create"
+  get "/course_members/new", :controller => "course_members", :action => "new"
+  post "/create_course_member", :controller => "course_members", :action => "create"
 
   # READ
-  get "/class_members", :controller => "class_members", :action => "index"
-  get "/class_members/:id", :controller => "class_members", :action => "show"
+  get "/course_members", :controller => "course_members", :action => "index"
+  get "/course_members/:id", :controller => "course_members", :action => "show"
 
   # UPDATE
-  get "/class_members/:id/edit", :controller => "class_members", :action => "edit"
-  post "/update_class_member/:id", :controller => "class_members", :action => "update"
+  get "/course_members/:id/edit", :controller => "course_members", :action => "edit"
+  post "/update_course_member/:id", :controller => "course_members", :action => "update"
 
   # DELETE
-  get "/delete_class_member/:id", :controller => "class_members", :action => "destroy"
+  get "/delete_course_member/:id", :controller => "course_members", :action => "destroy"
   #------------------------------
 
   # Routes for the Professor resource:

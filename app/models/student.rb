@@ -4,6 +4,7 @@ class Student < ApplicationRecord
   belongs_to :user
 
   has_many   :class_members,
+             :class_name => "CourseMember",
              :dependent => :destroy
 
   # Indirect associations
