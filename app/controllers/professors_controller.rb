@@ -1,6 +1,7 @@
 class ProfessorsController < ApplicationController
   def index
-    @professors = Professor.page(params[:page]).per(10)
+    @q = Professor.ransack(params[:q])
+    @professors = @q.result(:distinct => true).includes(:user, :classes).page(params[:page]).per(10)
 
     render("professors/index.html.erb")
   end
