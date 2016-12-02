@@ -16,7 +16,7 @@
 
       <% @class_members.each do |class_member| %>
       <tr>
-        <td><%= class_member.student_id %></td>
+        <td><%= class_member.student.name %></td>
         <td><%= class_member.class_id %></td>
         <td>
           <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">Show</a>
