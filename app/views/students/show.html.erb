@@ -18,7 +18,13 @@
       <dd><%= @student.photo %></dd>
 
       <dt>User</dt>
-      <dd><%= @student.user_id %></dd>
+      <dd>
+        <% if @student.user.present? %>
+          <a href="/users/<%= @student.user_id %>">
+            <%= @student.user.username %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

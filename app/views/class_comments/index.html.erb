@@ -17,7 +17,13 @@
 
       <% @class_comments.each do |class_comment| %>
       <tr>
-        <td><%= class_comment.class_member.student_id %></td>
+        <td>
+          <% if class_comment.class_member.present? %>
+            <a href="/class_members/<%= class_comment.class_member.id %>">
+              <%= class_comment.class_member.student_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= class_comment.summary %></td>
         <td><%= class_comment.body %></td>
         <td>

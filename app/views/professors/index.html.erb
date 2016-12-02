@@ -18,7 +18,13 @@
       <% @professors.each do |professor| %>
       <tr>
         <td><%= professor.name %></td>
-        <td><%= professor.user.username %></td>
+        <td>
+          <% if professor.user.present? %>
+            <a href="/users/<%= professor.user.id %>">
+              <%= professor.user.username %>
+            </a>
+          <% end %>
+        </td>
         <td><%= professor.last_name %></td>
         <td>
           <a href="/professors/<%= professor.id %>" class="btn btn-primary">Show</a>

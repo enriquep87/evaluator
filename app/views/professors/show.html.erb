@@ -9,7 +9,13 @@
       <dd><%= @professor.name %></dd>
 
       <dt>User</dt>
-      <dd><%= @professor.user_id %></dd>
+      <dd>
+        <% if @professor.user.present? %>
+          <a href="/users/<%= @professor.user_id %>">
+            <%= @professor.user.username %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Last name</dt>
       <dd><%= @professor.last_name %></dd>

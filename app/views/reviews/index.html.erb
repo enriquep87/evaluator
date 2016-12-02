@@ -17,8 +17,20 @@
 
       <% @reviews.each do |review| %>
       <tr>
-        <td><%= review.class_comment.class_member_id %></td>
-        <td><%= review.class_member.student_id %></td>
+        <td>
+          <% if review.class_comment.present? %>
+            <a href="/class_comments/<%= review.class_comment.id %>">
+              <%= review.class_comment.class_member_id %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if review.class_member.present? %>
+            <a href="/class_members/<%= review.class_member.id %>">
+              <%= review.class_member.student_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= review.rating %></td>
         <td>
           <a href="/reviews/<%= review.id %>" class="btn btn-primary">Show</a>

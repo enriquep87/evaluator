@@ -17,7 +17,13 @@
 
       <% @courses.each do |course| %>
       <tr>
-        <td><%= course.professor.name %></td>
+        <td>
+          <% if course.professor.present? %>
+            <a href="/professors/<%= course.professor.id %>">
+              <%= course.professor.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= course.name %></td>
         <td><%= course.quarter %></td>
         <td>

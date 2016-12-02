@@ -16,8 +16,20 @@
 
       <% @class_members.each do |class_member| %>
       <tr>
-        <td><%= class_member.student.name %></td>
-        <td><%= class_member.class.created_at %></td>
+        <td>
+          <% if class_member.student.present? %>
+            <a href="/students/<%= class_member.student.id %>">
+              <%= class_member.student.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if class_member.class.present? %>
+            <a href="/courses/<%= class_member.class.id %>">
+              <%= class_member.class.created_at %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">Show</a>
           <a href="/class_members/<%= class_member.id %>/edit" class="btn btn-warning">Edit</a>
