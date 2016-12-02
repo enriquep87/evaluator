@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit User #<%= @user.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_user/<%= @user.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for username -->
+      <div class="form-group">
+        <label for="username" class="control-label">
+          Username
+        </label>
+
+        <input type="text" id="username" name="username" placeholder="Username" class="form-control" value="<%= @user.username %>">
+      </div>
+
+      <!-- Label and input for email_address -->
+      <div class="form-group">
+        <label for="email_address" class="control-label">
+          Email address
+        </label>
+
+        <input type="text" id="email_address" name="email_address" placeholder="Email address" class="form-control" value="<%= @user.email_address %>">
+      </div>
+
+      <!-- Label and input for role -->
+      <div class="form-group">
+        <label for="role" class="control-label">
+          Role
+        </label>
+
+        <input type="text" id="role" name="role" placeholder="Role" class="form-control" value="<%= @user.role %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update User
+      </button>
+      or
+      <a href="/users/<%= @user.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
