@@ -6,6 +6,7 @@ class ProfessorsController < ApplicationController
   end
 
   def show
+    @course = Course.new
     @professor = Professor.find(params[:id])
 
     render("professors/show.html.erb")

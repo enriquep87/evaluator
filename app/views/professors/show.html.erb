@@ -57,6 +57,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_course" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for professor_id -->
+      <input type="hidden" name="professor_id" value="<%= @professor.id %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for quarter -->
+      <div class="form-group">
+        <label for="quarter" class="control-label">
+          Quarter
+        </label>
+
+        <input type="text" id="quarter" name="quarter" placeholder="Quarter" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Course
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

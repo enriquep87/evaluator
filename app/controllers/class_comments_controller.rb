@@ -6,6 +6,7 @@ class ClassCommentsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @class_comment = ClassComment.find(params[:id])
 
     render("class_comments/show.html.erb")

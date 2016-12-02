@@ -6,6 +6,8 @@ class ClassMembersController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    @class_comment = ClassComment.new
     @class_member = ClassMember.find(params[:id])
 
     render("class_members/show.html.erb")
