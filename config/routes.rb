@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "students#index"
   # Routes for the Class_comment resource:
   # CREATE
   get "/class_comments/new", :controller => "class_comments", :action => "new"
