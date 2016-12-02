@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @class_comment.errors.any? %>
+  <% @class_comment.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Class Comment #<%= @class_comment.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_class_comment/<%= @class_comment.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for class_member_id -->
+      <div class="form-group">
+        <label for="class_member_id" class="control-label">
+          Class member
+        </label>
+
+        <input type="text" id="class_member_id" name="class_member_id" placeholder="Class member" class="form-control" value="<%= @class_comment.class_member_id %>">
+      </div>
+
+      <!-- Label and input for summary -->
+      <div class="form-group">
+        <label for="summary" class="control-label">
+          Summary
+        </label>
+
+        <input type="text" id="summary" name="summary" placeholder="Summary" class="form-control" value="<%= @class_comment.summary %>">
+      </div>
+
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="body" class="control-label">
+          Body
+        </label>
+
+        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="<%= @class_comment.body %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Class Comment
+      </button>
+      or
+      <a href="/class_comments/<%= @class_comment.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Class_comment resource:
+  # CREATE
+  get "/class_comments/new", :controller => "class_comments", :action => "new"
+  post "/create_class_comment", :controller => "class_comments", :action => "create"
+
+  # READ
+  get "/class_comments", :controller => "class_comments", :action => "index"
+  get "/class_comments/:id", :controller => "class_comments", :action => "show"
+
+  # UPDATE
+  get "/class_comments/:id/edit", :controller => "class_comments", :action => "edit"
+  post "/update_class_comment/:id", :controller => "class_comments", :action => "update"
+
+  # DELETE
+  get "/delete_class_comment/:id", :controller => "class_comments", :action => "destroy"
+  #------------------------------
+
   # Routes for the Class_member resource:
   # CREATE
   get "/class_members/new", :controller => "class_members", :action => "new"
