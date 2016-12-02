@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h1>
+    Course members
+    <a href="/course_members/new" class="btn btn-lg btn-success">New Course member</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @course_members.each do |course_member| %>
+      <tr>
+        <td>
+          <% if course_member.student.present? %>
+            <a href="/students/<%= course_member.student.id %>">
+              <%= course_member.student.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if course_member.class.present? %>
+            <a href="/courses/<%= course_member.class.id %>">
+              <%= course_member.class.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <a href="/course_members/<%= course_member.id %>" class="btn btn-primary">Show</a>
+          <a href="/course_members/<%= course_member.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_course_member/<%= course_member.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @course_members, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

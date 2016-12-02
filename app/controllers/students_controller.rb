@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @class_member = ClassMember.new
+    @course_member = CourseMember.new
     @student = Student.find(params[:id])
 
     render("students/show.html.erb")

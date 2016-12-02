@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Class Member #<%= @class_member.id %></h3>
+  <h3>Course Member #<%= @course_member.id %></h3>
 </div>
 
 <div class="row">
@@ -7,18 +7,18 @@
     <dl class="dl-horizontal">
       <dt>Student</dt>
       <dd>
-        <% if @class_member.student.present? %>
-          <a href="/students/<%= @class_member.student_id %>">
-            <%= @class_member.student.name %>
+        <% if @course_member.student.present? %>
+          <a href="/students/<%= @course_member.student_id %>">
+            <%= @course_member.student.name %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Class</dt>
+      <dt>Course</dt>
       <dd>
-        <% if @class_member.class.present? %>
-          <a href="/courses/<%= @class_member.class_id %>">
-            <%= @class_member.class.created_at %>
+        <% if @course_member.class.present? %>
+          <a href="/courses/<%= @course_member.course_id %>">
+            <%= @course_member.class.created_at %>
           </a>
         <% end %>
       </dd>
@@ -26,20 +26,20 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/class_members" class="btn btn-primary">
+      <a href="/course_members" class="btn btn-primary">
         Back
       </a>
-      <a href="/class_members/<%= @class_member.id %>/edit" class="btn btn-warning">
+      <a href="/course_members/<%= @course_member.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_class_member/<%= @class_member.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_course_member/<%= @course_member.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Class member has many class_comments -->
+<!-- A Course member has many class_comments -->
 
 <div class="row">
   <div class="col-md-12">
@@ -48,19 +48,19 @@
         Class_comments
       </li>
 
-      <% @class_member.class_comments.each do |class_comment| %>
+      <% @course_member.class_comments.each do |session_comment| %>
         <li class="list-group-item">
-          <a href="/class_comments/<%= class_comment.id %>">
-            <%= class_comment.class_member_id %>
+          <a href="/session_comments/<%= session_comment.id %>">
+            <%= session_comment.course_member_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/class_comments/<%= class_comment.id %>" class="btn btn-primary">
+            <a href="/session_comments/<%= session_comment.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/class_comments/<%= class_comment.id %>/edit" class="btn btn-warning">
+            <a href="/session_comments/<%= session_comment.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_class_comment/<%= class_comment.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_session_comment/<%= session_comment.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -68,17 +68,17 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_class_comment" method="post">
+        <form action="/create_session_comment" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for class_member_id -->
+      <!-- Label and input for course_member_id -->
       <div class="form-group">
-        <label for="class_member_id" class="control-label">
-          Class member
+        <label for="course_member_id" class="control-label">
+          Course member
         </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id), :class => "form-control") %>
+        <%= select_tag(:course_member_id, options_from_collection_for_select(CourseMember.all, :id, :student_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for summary -->
@@ -100,7 +100,7 @@
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Class Comment
+        Create Session Comment
       </button>
     </form>
       </li>
@@ -108,7 +108,7 @@
   </div>
 </div>
 
-<!-- A Class member has many reviews -->
+<!-- A Course member has many reviews -->
 
 <div class="row">
   <div class="col-md-12">
@@ -117,10 +117,10 @@
         Reviews
       </li>
 
-      <% @class_member.reviews.each do |review| %>
+      <% @course_member.reviews.each do |review| %>
         <li class="list-group-item">
           <a href="/reviews/<%= review.id %>">
-            <%= review.class_comment_id %>
+            <%= review.session_comment_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/reviews/<%= review.id %>" class="btn btn-primary">
@@ -141,22 +141,22 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for class_comment_id -->
+      <!-- Label and input for session_comment_id -->
       <div class="form-group">
-        <label for="class_comment_id" class="control-label">
-          Class comment
+        <label for="session_comment_id" class="control-label">
+          Session comment
         </label>
 
-        <%= select_tag(:class_comment_id, options_from_collection_for_select(ClassComment.all, :id, :class_member_id), :class => "form-control") %>
+        <%= select_tag(:session_comment_id, options_from_collection_for_select(SessionComment.all, :id, :course_member_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for class_member_id -->
+      <!-- Label and input for course_member_id -->
       <div class="form-group">
-        <label for="class_member_id" class="control-label">
-          Class member
+        <label for="course_member_id" class="control-label">
+          Course member
         </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id), :class => "form-control") %>
+        <%= select_tag(:course_member_id, options_from_collection_for_select(CourseMember.all, :id, :student_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for rating -->

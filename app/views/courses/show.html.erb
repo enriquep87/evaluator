@@ -45,19 +45,19 @@
         Class_members
       </li>
 
-      <% @course.class_members.each do |class_member| %>
+      <% @course.class_members.each do |course_member| %>
         <li class="list-group-item">
-          <a href="/class_members/<%= class_member.id %>">
-            <%= class_member.student_id %>
+          <a href="/course_members/<%= course_member.id %>">
+            <%= course_member.student_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">
+            <a href="/course_members/<%= course_member.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/class_members/<%= class_member.id %>/edit" class="btn btn-warning">
+            <a href="/course_members/<%= course_member.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_class_member/<%= class_member.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_course_member/<%= course_member.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -65,7 +65,7 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_class_member" method="post">
+        <form action="/create_course_member" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -78,17 +78,11 @@
         <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for class_id -->
-      <div class="form-group">
-        <label for="class_id" class="control-label">
-          Class
-        </label>
-
-        <%= select_tag(:class_id, options_from_collection_for_select(Course.all, :id, :created_at), :class => "form-control") %>
-      </div>
+      <!-- Label and input for course_id -->
+      <input type="hidden" name="course_id" value="<%= @course.id %>">
 
       <button class="btn btn-block btn-success">
-        Create Class Member
+        Create Course Member
       </button>
     </form>
       </li>

@@ -1,6 +1,6 @@
-ActiveAdmin.register ClassComment do
+ActiveAdmin.register SessionComment do
 
- permit_params :class_member_id, :summary, :body
+ permit_params :course_member_id, :summary, :body
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
