@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Class_member resource:
+  # CREATE
+  get "/class_members/new", :controller => "class_members", :action => "new"
+  post "/create_class_member", :controller => "class_members", :action => "create"
+
+  # READ
+  get "/class_members", :controller => "class_members", :action => "index"
+  get "/class_members/:id", :controller => "class_members", :action => "show"
+
+  # UPDATE
+  get "/class_members/:id/edit", :controller => "class_members", :action => "edit"
+  post "/update_class_member/:id", :controller => "class_members", :action => "update"
+
+  # DELETE
+  get "/delete_class_member/:id", :controller => "class_members", :action => "destroy"
+  #------------------------------
+
   # Routes for the Professor resource:
   # CREATE
   get "/professors/new", :controller => "professors", :action => "new"
