@@ -24,7 +24,7 @@
           Professor
         </label>
 
-        <input type="text" id="professor_id" name="professor_id" placeholder="Professor" class="form-control" value="<%= @course.professor_id %>">
+        <%= select_tag(:professor_id, options_from_collection_for_select(Professor.all, :id, :name, @course.professor_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
