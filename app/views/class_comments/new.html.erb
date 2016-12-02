@@ -24,7 +24,7 @@
           Class member
         </label>
 
-        <input type="text" id="class_member_id" name="class_member_id" placeholder="Class member" class="form-control" value="<%= @class_comment.class_member_id %>">
+        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id, @class_comment.class_member_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for summary -->
