@@ -1,6 +1,6 @@
 class ClassMembersController < ApplicationController
   def index
-    @class_members = ClassMember.all
+    @class_members = ClassMember.page(params[:page]).per(10)
 
     render("class_members/index.html.erb")
   end

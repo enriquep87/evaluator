@@ -1,6 +1,6 @@
 class ClassCommentsController < ApplicationController
   def index
-    @class_comments = ClassComment.all
+    @class_comments = ClassComment.page(params[:page]).per(10)
 
     render("class_comments/index.html.erb")
   end

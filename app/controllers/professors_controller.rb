@@ -1,6 +1,6 @@
 class ProfessorsController < ApplicationController
   def index
-    @professors = Professor.all
+    @professors = Professor.page(params[:page]).per(10)
 
     render("professors/index.html.erb")
   end
