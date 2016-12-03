@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
   ActiveAdmin.routes(self)
   root :to => "students#index"
   # Routes for the Class_comment resource:
