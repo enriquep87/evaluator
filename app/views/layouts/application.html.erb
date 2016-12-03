@@ -52,8 +52,13 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
+          <%if current_user != nil%>
+            <li><a href="/users/edit"><%=current_user.username%></a></li>
+            <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out Link</a></li>
+          <%else%>
+            <li><a href="/users/sign_up" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>Join</a></li>
+            <li><a href="/users/sign_in" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>Enter</a></li>
+          <%end%>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>
