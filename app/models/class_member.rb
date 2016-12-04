@@ -15,5 +15,6 @@ class ClassMember < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  validates(:student_id, {:presence=>true})
+  validates(:class_id, {:presence=>true})
 end

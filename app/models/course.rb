@@ -14,5 +14,7 @@ class Course < ApplicationRecord
              :source => :student
 
   # Validations
-
+  validates(:professor_id, {:presence=>true})
+  validates(:name, {:presence=>true})
+  validates(:quarter, {:presence=>true})
 end

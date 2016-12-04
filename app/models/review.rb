@@ -8,5 +8,7 @@ class Review < ApplicationRecord
   # Indirect associations
 
   # Validations
+  validates(:class_member_id, {:presence=>true})
+  validates(:class_comment_id, {:presence=>true})
 
 end

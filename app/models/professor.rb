@@ -10,5 +10,7 @@ class Professor < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  validates(:user_id, {:presence=>true})
+  validates(:name, {:presence=>true})
+  validates(:last_name, {:presence=>true})
 end
