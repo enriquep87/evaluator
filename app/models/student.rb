@@ -12,6 +12,10 @@ class Student < ApplicationRecord
              :through => :class_members,
              :source => :course
 
+ has_many   :comments_inclass,
+            :through => :class_members,
+            :source => :class_comment
+
   # Validations
   validates(:name, {:presence=>true})
   validates(:last_name, {:presence=>true})
