@@ -10,7 +10,7 @@ class Student < ApplicationRecord
 
   has_many   :classes,
              :through => :class_members,
-             :source => :class
+             :source => :course
 
   # Validations
   validates(:name, {:presence=>true})
