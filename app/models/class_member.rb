@@ -2,13 +2,13 @@ class ClassMember < ApplicationRecord
   # Direct associations
 
   has_many   :reviews,
-             :dependent => :destroy
+  :dependent => :destroy
 
   has_many   :class_comments,
-             :dependent => :destroy
+  :dependent => :destroy
 
   belongs_to :class,
-             :class_name => "Course"
+  :class_name => "Course"
 
   belongs_to :student
 

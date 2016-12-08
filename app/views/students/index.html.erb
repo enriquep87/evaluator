@@ -140,7 +140,8 @@
         <td><%= student.name %></td>
         <td><%= student.last_name %></td>
         <td><%= student.mba_class %></td>
-        <td><%= student.photo %></td>
+        <td><img src="<%= student.photo %>" width="100">
+          </td>
         <td>
           <% if student.user.present? %>
             <a href="/users/<%= student.user.id %>">

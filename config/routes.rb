@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
+
   ActiveAdmin.routes(self)
   root :to => "students#index"
   # Routes for the Class_comment resource:
@@ -53,22 +53,22 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_professor/:id", :controller => "professors", :action => "destroy"
   #------------------------------
-
+  devise_for :users
   # Routes for the User resource:
   # CREATE
   get "/users/new", :controller => "users", :action => "new"
-  post "/create_user", :controller => "users", :action => "create"
+#  post "/create_user", :controller => "users", :action => "create"
 
   # READ
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
 
   # UPDATE
-  get "/users/:id/edit", :controller => "users", :action => "edit"
-  post "/update_user/:id", :controller => "users", :action => "update"
+#  get "/users/:id/edit", :controller => "users", :action => "edit"
+#  post "/update_user/:id", :controller => "users", :action => "update"
 
   # DELETE
-  get "/delete_user/:id", :controller => "users", :action => "destroy"
+#  get "/delete_user/:id", :controller => "users", :action => "destroy"
   #------------------------------
 
   # Routes for the Course resource:
