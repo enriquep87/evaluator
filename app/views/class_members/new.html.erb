@@ -27,13 +27,13 @@
         <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name, @class_member.student_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for class_id -->
+      <!-- Label and input for course_id -->
       <div class="form-group">
-        <label for="class_id" class="control-label">
-          Class
+        <label for="course_id" class="control-label">
+          Course
         </label>
 
-        <%= select_tag(:class_id, options_from_collection_for_select(Course.all, :id, :created_at, @class_member.class_id), :class => "form-control") %>
+        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :name, @class_member.course_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

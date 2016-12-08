@@ -78,13 +78,13 @@
       <!-- Label and input for student_id -->
       <input type="hidden" name="student_id" value="<%= @student.id %>">
 
-      <!-- Label and input for class_id -->
+      <!-- Label and input for course_id -->
       <div class="form-group">
-        <label for="class_id" class="control-label">
+        <label for="course_id" class="control-label">
           Class
         </label>
 
-        <%= select_tag(:class_id, options_from_collection_for_select(Course.all, :id, :created_at), :class => "form-control") %>
+        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :created_at), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">

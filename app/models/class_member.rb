@@ -7,8 +7,7 @@ class ClassMember < ApplicationRecord
   has_many   :class_comments,
   :dependent => :destroy
 
-  belongs_to :class,
-  :class_name => "Course"
+  belongs_to :course
 
   belongs_to :student
 
@@ -16,5 +15,5 @@ class ClassMember < ApplicationRecord
 
   # Validations
   validates(:student_id, {:presence=>true})
-  validates(:class_id, {:presence=>true})
+  validates(:course_id, {:presence=>true})
 end

@@ -17,7 +17,7 @@
       <dt>Class</dt>
       <dd>
         <% if @class_member.class.present? %>
-          <a href="/courses/<%= @class_member.class_id %>">
+          <a href="/courses/<%= @class_member.course_id %>">
             <%= @class_member.class.created_at %>
           </a>
         <% end %>

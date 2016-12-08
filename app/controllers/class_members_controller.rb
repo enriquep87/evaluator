@@ -9,7 +9,7 @@ class ClassMembersController < ApplicationController
   def show
     @review = Review.new
     @class_comment = ClassComment.new
-    @class_member = ClassMember.find(params[:id])
+    @class_member = Class_Member.find(params[:id])
 
     render("class_members/show.html.erb")
   end
@@ -24,7 +24,7 @@ class ClassMembersController < ApplicationController
     @class_member = ClassMember.new
 
     @class_member.student_id = params[:student_id]
-    @class_member.class_id = params[:class_id]
+    @class_member.course_id = params[:course_id]
 
     save_status = @class_member.save
 
@@ -52,7 +52,7 @@ class ClassMembersController < ApplicationController
     @class_member = ClassMember.find(params[:id])
 
     @class_member.student_id = params[:student_id]
-    @class_member.class_id = params[:class_id]
+    @class_member.course_id = params[:course_id]
 
     save_status = @class_member.save
 
