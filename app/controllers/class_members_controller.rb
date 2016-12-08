@@ -1,7 +1,8 @@
 class ClassMembersController < ApplicationController
   def index
-    @q = ClassMember.ransack(params[:q])
-    @class_members = @q.result(:distinct => true).includes(:student, :class, :class_comments, :reviews).page(params[:page]).per(10)
+    @class_members = ClassMember.all
+    #@q = ClassMember.ransack(params[:q])
+    #@class_members = @q.result(:distinct => true).includes(:student, :class, :class_comments, :reviews).page(params[:page]).per(10)
 
     render("class_members/index.html.erb")
   end

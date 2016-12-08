@@ -25,8 +25,8 @@
         </td>
         <td>
           <% if class_member.class.present? %>
-            <a href="/courses/<%= class_member.class.id %>">
-              <%= class_member.class.created_at %>
+            <a href="/courses/<%= class_member.course.id %>">
+              <%= class_member.course.name %>
             </a>
           <% end %>
         </td>
@@ -38,6 +38,6 @@
       </tr>
       <% end %>
     </table>
-    <%= paginate @class_members, theme: 'twitter-bootstrap-4' %>
+
   </div>
 </div>
