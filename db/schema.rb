@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203225957) do
+ActiveRecord::Schema.define(version: 20161208052004) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161203225957) do
 
   create_table "class_members", force: :cascade do |t|
     t.integer  "student_id"
-    t.integer  "class_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
