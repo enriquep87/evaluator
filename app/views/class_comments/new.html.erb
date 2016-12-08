@@ -24,8 +24,10 @@
           Class member
         </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id, @class_comment.class_member_id), :class => "form-control") %>
+        <%= select_tag(:class_member_id, options_from_collection_for_select(Student.all, :id, :name, @class_comment.class_member_id), :class => "form-control") %>
       </div>
+
+
 
       <!-- Label and input for summary -->
       <div class="form-group">

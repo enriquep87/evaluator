@@ -20,7 +20,7 @@
         <td>
           <% if class_comment.class_member.present? %>
             <a href="/class_members/<%= class_comment.class_member.id %>">
-              <%= class_comment.class_member.student_id %>
+              <%= class_comment.class_member.student.name %>
             </a>
           <% end %>
         </td>
