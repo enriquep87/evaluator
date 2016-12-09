@@ -12,6 +12,7 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Author</th>
+        <th>Class</th>
         <th>Summary</th>
         <th>Body</th>
         <th>Actions</th>
@@ -26,6 +27,13 @@
             </a>
           <% end %>
         </td>
+
+        <td>
+          <% if class_comment.class_member.present? %>
+            <a href="/courses/<%= class_comment.course.id %>">
+              <%= class_comment.course.name %></td>
+            </a>
+          <% end %>
         <td><%= class_comment.summary %></td>
         <td><%= class_comment.body %></td>
         <td>
