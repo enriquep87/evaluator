@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new
-    
+
     @review.class_comment_id = params[:class_comment_id]
     @review.class_member_id = params[:class_member_id]
 
@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 
       case referer
       when "/reviews/new", "/create_review"
-        redirect_to("/reviews/myopinion")
+        redirect_to("/reviews")
       else
         redirect_back(:fallback_location => "/", :notice => "Review created successfully.")
       end

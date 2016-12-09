@@ -21,8 +21,7 @@ class ClassCommentsController < ApplicationController
 
   def create
     @class_comment = ClassComment.new
-
-  
+    
     @class_comment.class_member_id = params[:class_member_id]
     @class_comment.summary = params[:summary]
     @class_comment.body = params[:body]

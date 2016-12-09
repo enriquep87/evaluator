@@ -33,7 +33,7 @@
           Comment by:
         </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassComment.all, :id, :class_member_id, @review.class_comment_id), :class => "form-control") %>
+        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_name, @review.class_comment_id), :class => "form-control") %>
 
       </div>
 

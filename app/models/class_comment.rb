@@ -10,8 +10,8 @@ class ClassComment < ApplicationRecord
 
   belongs_to :class_member
 
-  delegate :student, :to => :class_member, :allow_nil => true
-  delegate :course, :to => :class_member, :allow_nil => true
+    delegate :student, :to => :class_member, :allow_nil => true
+    delegate :course, :to => :class_member, :allow_nil => true
 
   def student_name
     return student.name
