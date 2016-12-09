@@ -12,6 +12,15 @@ class ReviewsController < ApplicationController
     render("reviews/show.html.erb")
   end
 
+  def opinion
+    @student = Student.find_by(:user_id => current_user.id)
+    @class_member = ClassMember.find_by(:student_id => @student.id)
+    @opinion = Review.where(:class_member_id => @class_member.id)
+
+    render("reviews/my_opinion.html.erb")
+
+  end
+
   def new
     @review = Review.new
 

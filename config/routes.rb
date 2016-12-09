@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   get "/reviews/new", :controller => "reviews", :action => "new"
   post "/create_review", :controller => "reviews", :action => "create"
 
+  get "/reviews/myopinion", :controller => "reviews", :action => "opinion"
   # READ
   get "/reviews", :controller => "reviews", :action => "index"
   get "/reviews/:id", :controller => "reviews", :action => "show"
@@ -104,6 +105,7 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_review/:id", :controller => "reviews", :action => "destroy"
   #------------------------------
+
 
   # Routes for the Student resource:
   # CREATE

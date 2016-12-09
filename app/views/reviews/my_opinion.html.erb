@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Reviews
-  
+    <a href="/reviews/new" class="btn btn-lg btn-success">New Review</a>
   </h1>
 
 
@@ -15,9 +15,9 @@
         <th>Actions</th>
       </tr>
 
-      <% @reviews.each do |review| %>
+      <% @opinion.each do |review| %>
       <tr>
-        <%if review.class_comment.class_member.student.user.username == current_user.username%>
+
           <td>
             <% if review.class_comment.present? %>
               <a href="/class_comments/<%= review.class_comment.id %>">
@@ -39,12 +39,9 @@
             <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
           </td>
 
-        <%else%>
-        <p>No one has reviewed your comments yet</p>
-        <% end %>
       </tr>
       <% end %>
     </table>
-    <%= paginate @reviews, theme: 'twitter-bootstrap-4' %>
+    
   </div>
 </div>
