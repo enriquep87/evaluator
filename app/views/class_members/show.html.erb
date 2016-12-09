@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Class Member #<%= @class_member.id %></h3>
+  <h3>Class Member: <%= @class_member.student.name %></h3>
 </div>
 
 <div class="row">
@@ -18,7 +18,7 @@
       <dd>
         <% if @class_member.class.present? %>
           <a href="/courses/<%= @class_member.course_id %>">
-            <%= @class_member.class.created_at %>
+            <%= @class_member.course.name %>
           </a>
         <% end %>
       </dd>
@@ -29,9 +29,7 @@
       <a href="/class_members" class="btn btn-primary">
         Back
       </a>
-      <a href="/class_members/<%= @class_member.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
+
       <a href="/delete_class_member/<%= @class_member.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
@@ -51,59 +49,26 @@
       <% @class_member.class_comments.each do |class_comment| %>
         <li class="list-group-item">
           <a href="/class_comments/<%= class_comment.id %>">
-            <%= class_comment.class_member_id %>
+            <%= class_comment.summary %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/class_comments/<%= class_comment.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/class_comments/<%= class_comment.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_class_comment/<%= class_comment.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+
+            <%if @class_member.student.user.username == current_user.username %>
+              <a href="/class_comments/<%= class_comment.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_class_comment/<%= class_comment.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+              <% end %>
           </div>
         </li>
       <% end %>
 
-      <li class="list-group-item">
-        <form action="/create_class_comment" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for class_member_id -->
-      <div class="form-group">
-        <label for="class_member_id" class="control-label">
-          Class member
-        </label>
-
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for summary -->
-      <div class="form-group">
-        <label for="summary" class="control-label">
-          Summary
-        </label>
-
-        <input type="text" id="summary" name="summary" placeholder="Summary" class="form-control" value="">
-      </div>
-
-      <!-- Label and input for body -->
-      <div class="form-group">
-        <label for="body" class="control-label">
-          Body
-        </label>
-
-        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="">
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Class Comment
-      </button>
-    </form>
-      </li>
     </ul>
   </div>
 </div>
@@ -120,59 +85,26 @@
       <% @class_member.reviews.each do |review| %>
         <li class="list-group-item">
           <a href="/reviews/<%= review.id %>">
-            <%= review.class_comment_id %>
+            <%= review.class_comment.summary %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/reviews/<%= review.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+
+            <%if @class_member.student.user.username == current_user.username %>
+              <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
 
-      <li class="list-group-item">
-        <form action="/create_review" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for class_comment_id -->
-      <div class="form-group">
-        <label for="class_comment_id" class="control-label">
-          Class comment
-        </label>
-
-        <%= select_tag(:class_comment_id, options_from_collection_for_select(ClassComment.all, :id, :class_member_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for class_member_id -->
-      <div class="form-group">
-        <label for="class_member_id" class="control-label">
-          Class member
-        </label>
-
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for rating -->
-      <div class="form-group">
-        <label for="rating" class="control-label">
-          Rating
-        </label>
-
-        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="">
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Review
-      </button>
-    </form>
-      </li>
     </ul>
   </div>
 </div>

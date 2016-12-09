@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Class Member #<%= @class_member.id %></h3>
+  <h3>Edit Class Member: <%= @class_member.student.name %></h3>
 </div>
 
 <div class="row">
@@ -33,7 +33,7 @@
           Class
         </label>
 
-        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :created_at, @class_member.course_id), :class => "form-control") %>
+        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :name, @class_member.course_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

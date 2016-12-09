@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
     Class members
-    <a href="/class_members/new" class="btn btn-lg btn-success">New Class member</a>
+    <%if current_user.role == "Student" %>
+      <a href="/class_members/new" class="btn btn-lg btn-success">New Class member</a>
+    <%end%>
   </h1>
 </div>
 
@@ -40,8 +42,11 @@
         </td>
         <td>
           <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">Show</a>
-          <a href="/class_members/<%= class_member.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_class_member/<%= class_member.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+          <%if class_member.student.user.username == current_user.username %>
+          
+            <a href="/delete_class_member/<%= class_member.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

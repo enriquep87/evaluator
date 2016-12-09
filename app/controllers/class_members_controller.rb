@@ -10,7 +10,7 @@ class ClassMembersController < ApplicationController
   def show
     @review = Review.new
     @class_comment = ClassComment.new
-    @class_member = Class_Member.find(params[:id])
+    @class_member = ClassMember.find(params[:id])
 
     render("class_members/show.html.erb")
   end
