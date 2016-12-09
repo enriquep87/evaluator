@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Class Comment #<%= @class_comment.id %></h3>
+  <h3>Edit Class Comment: <%= @class_comment.summary %></h3>
 </div>
 
 <div class="row">
@@ -19,13 +19,12 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for class_member_id -->
-      <div class="form-group">
-        <label for="class_member_id" class="control-label">
-          Class member
-        </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id, @class_comment.class_member_id), :class => "form-control") %>
-      </div>
+
+
+        <input type="hidden" id="class_member_id" name="class_member_id"  class="form-control" value="<%= @class_comment.class_member.id %>">
+
+      
 
       <!-- Label and input for summary -->
       <div class="form-group">

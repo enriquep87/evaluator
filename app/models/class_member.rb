@@ -15,6 +15,11 @@ class ClassMember < ApplicationRecord
 
   belongs_to :student
 
+  def student_name
+    return student.name
+
+  end
+
   # Indirect associations
 
   # Validations
