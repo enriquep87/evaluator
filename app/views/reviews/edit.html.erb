@@ -18,8 +18,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <h4>Comment:</h4>
-      <h3><%=@review.class_comment.summary%></h3>
+      <p>Comment:</p>
+      <p><%=@review.class_comment.summary%></p>
 
       <!-- Label and input for class_comment_id -->
       <div class="form-group">
@@ -28,7 +28,7 @@
         </label>
         <p><%=@review.class_comment.class_member.student.name%></p>
 
-        <input type="text" id="class_comment_id" name="class_comment_id" placeholder="User" class="form-control" value="<%= @review.class_comment.class_member.id %>">
+        <input type="hidden" id="class_comment_id" name="class_comment_id"  class="form-control" value="<%= @review.class_comment.id %>">
 
       </div>
 
@@ -37,12 +37,12 @@
         <label for="class_member_id" class="control-label">
           Reviewed by:
         </label>
-        <input type="hidden" id="class_member_id" name="class_member_id" placeholder="User" class="form-control" value="<%= @review.class_member.id %>">
+        <input type="hidden" id="class_member_id" name="class_member_id" class="form-control" value="<%= @review.class_member.id %>">
         <p><%=@review.class_member.student.name%></p>
 
       </div>
 
-      <h5>Current rating:</h5>
+      <p>Current rating:</p>
       <h5><%=@review.rating%></h5>
       <!-- Label and input for rating -->
       <div class="form-group">
