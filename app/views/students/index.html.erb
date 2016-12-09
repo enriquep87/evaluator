@@ -1,8 +1,12 @@
 <div class="page-header">
+
   <h1>
     Students
-    <a href="/students/new" class="btn btn-lg btn-success">New Student</a>
+    <%if current_user.role == "Student"%>
+      <a href="/students/new" class="btn btn-lg btn-success">New Student</a>
+    <%end%>
   </h1>
+
 </div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "students_filters" do |f| %>
@@ -57,8 +61,10 @@
         </td>
         <td>
           <a href="/students/<%= student.id %>" class="btn btn-primary">Show</a>
-          <a href="/students/<%= student.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <%if student.user.username == current_user.username %>
+            <a href="/students/<%= student.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
