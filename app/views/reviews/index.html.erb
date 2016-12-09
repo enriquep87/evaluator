@@ -13,7 +13,7 @@
         <th>Summary</th>
         <th>Body</th>
         <th>Class member reviewer</th>
-        <th>Role</th>
+        <%#<th>Role</th>%>
         <th>Rating</th>
         <th>Actions</th>
       </tr>
@@ -32,7 +32,7 @@
 
             <td>
               <% if review.class_member.present? %>
-                
+
                 <a href="/class_comments/<%= review.class_comment.id %>">
                   <%= review.class_comment.summary %>
                 </a>
