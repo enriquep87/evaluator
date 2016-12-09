@@ -30,12 +30,14 @@
       <!-- Label and input for class_member_id -->
       <div class="form-group">
         <label for="class_member_id" class="control-label">
-          Class member
+          Comment by:
         </label>
 
-        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassMember.all, :id, :student_id, @review.class_member_id), :class => "form-control") %>
+        <%= select_tag(:class_member_id, options_from_collection_for_select(ClassComment.all, :id, :class_member_id, @review.class_comment_id), :class => "form-control") %>
+
       </div>
 
+      
       <!-- Label and input for rating -->
       <div class="form-group">
         <label for="rating" class="control-label">
