@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Course #<%= @course.id %></h3>
+  <h3>Course: <%= @course.name %></h3>
 </div>
 
 <div class="row">
@@ -26,75 +26,13 @@
       <a href="/courses" class="btn btn-primary">
         Back
       </a>
-      <a href="/courses/<%= @course.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_course/<%= @course.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+
     </div>
   </div>
 </div>
 
 <!-- A Course has many class_members -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Class_members
-      </li>
-
-      <% @course.class_members.each do |class_member| %>
-        <li class="list-group-item">
-          <a href="/class_members/<%= class_member.id %>">
-            <%= class_member.student_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/class_members/<%= class_member.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/class_members/<%= class_member.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_class_member/<%= class_member.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_class_member" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for student_id -->
-      <div class="form-group">
-        <label for="student_id" class="control-label">
-          Student
-        </label>
-
-        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for course_id -->
-      <div class="form-group">
-        <label for="course_id" class="control-label">
-          Class
-        </label>
-
-        <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :created_at), :class => "form-control") %>
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Class Member
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
 
 <!-- A Course has many students -->
 
@@ -114,12 +52,14 @@
             <a href="/students/<%= student.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/students/<%= student.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if student.user.username == current_user.username %>
+              <a href="/students/<%= student.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
