@@ -11,6 +11,7 @@
       <tr>
         <th>Student</th>
         <th>Class</th>
+        <th>Class Member Id</th>
         <th>Actions</th>
       </tr>
 
@@ -28,6 +29,13 @@
             <a href="/courses/<%= class_member.course.id %>">
               <%= class_member.course.name %>
             </a>
+          <% end %>
+        </td>
+        <td>
+          <% if class_member.class.present? %>
+
+            <p>  <%= class_member.id %></p>
+
           <% end %>
         </td>
         <td>

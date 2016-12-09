@@ -28,7 +28,7 @@
         </label>
         <p><%=@review.class_comment.class_member.student.name%></p>
 
-        <input type="hidden" id="class_comment_id" name="class_comment_id" placeholder="User" class="form-control" value="<%= @review.class_comment.class_member.id %>">
+        <input type="text" id="class_comment_id" name="class_comment_id" placeholder="User" class="form-control" value="<%= @review.class_comment.class_member.id %>">
 
       </div>
 
@@ -42,14 +42,15 @@
 
       </div>
 
-
+      <h5>Current rating:</h5>
+      <h5><%=@review.rating%></h5>
       <!-- Label and input for rating -->
       <div class="form-group">
         <label for="rating" class="control-label">
-          Rating
+          New rating
         </label>
 
-        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @review.rating %>">
+        <%= select_tag(:rating, options_for_select(["Awful","Bad","Ok","Good","Great"]), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

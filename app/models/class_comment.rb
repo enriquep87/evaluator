@@ -5,7 +5,7 @@ class ClassComment < ApplicationRecord
              :dependent => :destroy
 
 
- has_many   :critiques, :through => :reviews, :source => :class_members
+ has_many   :critiqs, :through => :reviews, :source => :class_member
 
 
   belongs_to :class_member

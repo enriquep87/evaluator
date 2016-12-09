@@ -7,6 +7,10 @@ class ClassMember < ApplicationRecord
   has_many   :class_comments,
   :dependent => :destroy
 
+  has_many :reviewed_comments,
+  :through => :reviews,
+  :source => :class_comment
+
   belongs_to :course
 
   belongs_to :student

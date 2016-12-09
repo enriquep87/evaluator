@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Reviews
-  
+
   </h1>
 
 
@@ -21,9 +21,11 @@
           <td>
             <% if review.class_comment.present? %>
               <a href="/class_comments/<%= review.class_comment.id %>">
-                <%= review.class_comment.class_member.student.name %>
+                <%= review.class_comment.class_member.id %>
               </a>
             <% end %>
+            <p><%=review.class_comment.critiqs.pluck(:id)%></p>
+
           </td>
           <td>
             <% if review.class_member.present? %>
