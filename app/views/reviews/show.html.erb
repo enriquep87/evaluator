@@ -17,6 +17,7 @@
       <dt>Summary</dt>
       <dd>
         <% if @review.class_member.present? %>
+          
           <a href="/class_comments/<%= @review.class_comment.id %>">
             <%= @review.class_comment.summary %>
           </a>
