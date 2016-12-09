@@ -16,8 +16,7 @@ class Student < ApplicationRecord
            :through => :class_members,
            :source => :class_comment
 
-  
-
+ 
 
 
   # Validations

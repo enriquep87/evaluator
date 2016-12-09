@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Review #<%= @review.id %></h3>
+  <h3>Review: <%= @review.class_comment.summary %></h3>
 </div>
 
 <div class="row">
@@ -10,6 +10,24 @@
         <% if @review.class_comment.present? %>
           <a href="/class_comments/<%= @review.class_comment_id %>">
             <%= @review.class_comment.class_member.student.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Summary</dt>
+      <dd>
+        <% if @review.class_member.present? %>
+          <a href="/class_comments/<%= @review.class_comment.id %>">
+            <%= @review.class_comment.summary %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Body</dt>
+      <dd>
+        <% if @review.class_member.present? %>
+
+            <%= @review.class_comment.body %>
           </a>
         <% end %>
       </dd>
@@ -32,12 +50,14 @@
       <a href="/reviews" class="btn btn-primary">
         Back
       </a>
-      <a href="/reviews/<%= @review.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_review/<%= @review.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <%if @review.class_member.student.user.username == current_user.username %>
+        <a href="/reviews/<%= @review.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_review/<%= @review.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <%end%>
     </div>
   </div>
 </div>
