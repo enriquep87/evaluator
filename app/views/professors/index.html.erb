@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
     Professors
-
+    <%if current_user.role == "Professor"%>
+      <a href="/professor/new" class="btn btn-lg btn-success">New Professor</a>
+    <%end%>
   </h1>
 
 <div class="row">
