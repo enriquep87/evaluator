@@ -13,6 +13,7 @@
         <th>Summary</th>
         <th>Body</th>
         <th>Class member reviewer</th>
+        <th>Role</th>
         <th>Rating</th>
         <th>Actions</th>
       </tr>
@@ -56,6 +57,8 @@
                 <%end%>
               <% end %>
             </td>
+
+        
             <td><%= review.rating %></td>
             <td>
               <a href="/reviews/<%= review.id %>" class="btn btn-primary">Show</a>
